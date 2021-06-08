@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import argparse
 import shutil
 import os
@@ -17,7 +18,7 @@ def humansize(nbytes):
     f = ('%.2f' % nbytes).rstrip('0').rstrip('.')
     return '%s %s' % (f, suffixes[i])
 
-if __name__ == "__main__":
+def calc(paths):
     parser = argparse.ArgumentParser()
     parser.add_argument("-hr", "--hrflag", action="store_true", help="Gives result in human readable format.")
     parser.add_argument("paths", nargs = '*', help="paths of files separated by space")
@@ -29,7 +30,7 @@ if __name__ == "__main__":
         paths.append(os.getcwd())
 
     total, free, used = "", "", ""
-
+    print(paths)
     for path in paths:
         stat = shutil.disk_usage(path)
         if args.hrflag:
@@ -37,8 +38,8 @@ if __name__ == "__main__":
 
         else:
             total, free, used = str(stat.total), str(stat.free), str(stat.used)
-
+        return total, free, used 
         print(f"{path} : Total Space - {total}, Free Space - {free}, Used Space - {used}")
-    
-
-
+        
+if __name__ == "__main__":
+    calc(paths)
