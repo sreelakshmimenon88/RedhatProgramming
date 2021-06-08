@@ -19,7 +19,7 @@ def humansize(nbytes):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("-hr", "--hrflag", action="store_true", help="hide line numbers of lines that match given pattern.")
+    parser.add_argument("-hr", "--hrflag", action="store_true", help="Gives result in human readable format.")
     parser.add_argument("paths", nargs = '*', help="paths of files separated by space")
     args = parser.parse_args() 
 
